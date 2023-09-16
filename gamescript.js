@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
         Accept: "application/json",
         "Content-Type": "application/json",
         Authorization:
-          "Bearer " + "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",
+          "Bearer " + "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",
       },
 
       body: JSON.stringify({

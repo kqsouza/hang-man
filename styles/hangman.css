@@ -1,0 +1,257 @@
+/*
+Bg-color #1: #F4F9F9;
+Font-color #1: #212A3E;
+*/
+
+:root{
+    --button-color: #DDDDDD;
+    --correct-color: #122c82;
+}
+
+body{
+    height: 100vh;
+    background-color: #000000;
+}
+
+#app{
+    /*background-image: url("../image/background-game.jpg");*/
+    /*background-color: #F6F8FF;*/
+    padding-top: 1%;
+    height: 100%;
+}
+
+.hangman-nav{
+    /*font-family: 'Staatliches', 'Vina Sans', cursive;*/
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /*color: #212A3E;*/
+    color: mintcream;
+    text-align: center;
+    margin-bottom: 2%;
+}
+
+.hangman-nav h2{
+    display: inline-block;
+    margin-bottom: 0;
+    letter-spacing: 0.5em;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.hangman-nav img{
+    width: 70px;
+    height: 110px;
+    margin-right: 1.2em;
+}
+
+.content-game{
+    padding: 20px 0 20px 0;
+    text-align: center;
+    border-top: 1px solid mintcream;
+
+}
+
+h5, .message{
+    font-family: "Raleway", "Questrial", "Kanit", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: mintcream;
+    font-weight: 500;
+    letter-spacing: 3px;
+}
+
+.instructions{
+    padding-top: 10px;
+}
+
+.instructions p{
+    color: white;
+    font-size: 0.9em;
+    font-family: 'Raleway', sans-serif;
+}
+
+.role{
+    position: relative;
+    top: 38%;
+    left: 55%;
+}
+
+.guess-panel{   
+    font-family: 'Staatliches', 'Vina Sans', cursive;
+    font-size: 60px;
+    padding-top: 5px;
+    margin-bottom: 10px;
+    height: 106px;
+}
+
+.inner-guess-panel{
+    margin: 0 auto;
+    margin-top: auto;
+    text-align: center;
+    letter-spacing: 13px;
+    color: var(--button-color);
+}
+
+/*Estilização dos Botões*/
+
+/*Início desativado*/
+.game-btn{
+    /*background-color: rgb(111, 111, 189);*/
+    color: white;
+    padding: 15px 25px;
+    display: inline-block;
+    font-size: 17px;
+    font-weight: bold;
+    border: 1px solid rgba(0,0,0,0.21);
+    border-bottom-color: rgba(0,0,0,0.34);
+    text-shadow:1px 2px 0 rgba(0,0,0,0.15);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.34) inset, 
+				      0 2px 0 -1px rgba(0,0,0,0.13), 
+				      0 3px 0 -1px rgba(0,0,0,0.08), 
+				      0 3px 13px -1px rgba(0,0,0,0.21);
+}
+
+.game-btn.mini{
+    padding: 4px 12px;  
+    font-size: 12px;
+}
+
+.game-btn.letter{
+    padding: 5px 10px 5px 10px;
+}
+
+.game-btn:active {
+    position: relative;
+	top: 1px;
+	border-color: rgba(0,0,0,0.34) rgba(0,0,0,0.21) rgba(0,0,0,0.21);
+	box-shadow: 0 1px 0 rgba(255,255,255,0.89),0 1px rgba(0,0,0,0.05) inset;	
+}
+
+/*Fim desativado*/
+
+.gm-btn{
+    color: rgba(0,0,0,0.7);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 10px 17px;
+    background-color: var(--button-color);
+    border: 2px solid var(--button-color);
+    border-radius: 0.4em;
+    text-transform: uppercase;
+    transition: all 0.3s;    
+    margin-right: 3px;
+    margin-top: 6px;
+}
+
+.gm-btn:hover{
+    background-color: black;
+    border: 2px solid var(--button-color);
+    color: var(--button-color);
+
+}
+
+.gm-btn:active{
+    scale: 1.1;
+    background-color: var(--button-color);
+    border: 2px solid var(--button-color);
+    color: rgba(0,0,0,0.7);
+    transition: all 0s;
+}
+
+.controllers{
+    color: white;
+    font-size: 2.4em;
+    margin-bottom: 25px;
+}
+
+.controllers a{
+    color: #F6F1F1;
+}
+
+.controllers a:hover{
+    color: #F3EFE0;
+}
+
+
+.disabled{
+    pointer-events: none;
+    border: 2px solid crimson;
+    background-color: crimson;
+}
+
+.end-game{
+    pointer-events: none;
+}
+
+.correct {
+    pointer-events: none;
+    border: 2px solid var(--correct-color);
+    background-color: black;
+    color: white;
+}
+
+.incorrect {
+    pointer-events: none;
+    border: 2px solid crimson;
+    background-color: black;
+    color: crimson;
+}
+
+.history-letters{
+    color: white;
+    letter-spacing: 5px;
+    margin-bottom: 5px;
+}
+
+.figure-container {
+    fill: transparent;
+    stroke: white;
+    stroke-width: 4px;
+    stroke-linecap: round;
+  }
+  
+  .figure-part {
+    display: none;
+  }
+
+.keyboard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.errors, .errorsp {
+    font-family: "Raleway", "Questrial", "Kanit", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: mintcream;
+    font-weight: 500;
+    letter-spacing: 3px;
+}
+
+.errorsp{
+    font-weight: 700;
+    color: crimson;
+    font-size: 20px;
+}
+
+.game-finish{
+    position: absolute;
+    border: 1px solid yellow;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.container-finish{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 250px;
+    height: 250px;
+    border: 1px solid white;
+}
+
+.message {
+    background-color: white;
+    color: black;
+}

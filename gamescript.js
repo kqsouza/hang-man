@@ -115,31 +115,15 @@ document.addEventListener("DOMContentLoaded", function () {
     //palavraAdivinha = myChance.first({ gender: "female" });
     //palavraAdivinha = palavraAdivinha.toUpperCase();
 
-    await fetch("https://api.openai.com/v1/completions", {
-      method: "POST",
-
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization:
-          "Bearer " + "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",
-      },
-
-      body: JSON.stringify({
-        model: "text-davinci-003",
-        prompt:
-          "Me diga uma palavra aleatória da língua portuguesa, tudo em maiúsculo sem o ponto final.",
-        max_tokens: 2048,
-        temperature: 0.5,
-      }),
-    })
-      .then((resposta) => resposta.json())
-      .then((dados) => {
-        console.log(dados);
-        palavraAdivinha = dados.choices[0].text;
+    fetch("http://localhost:3333/")
+      .then(function (response) {
+        //console.log(response.json());
+        return response.json();
       })
-      .catch((erro) => {
-        console.log(erro);
+      .then(function (response) {
+        console.log(response);
+        palavraAdivinha = response;
+        drawLines(palavraAdivinha.length);
       });
 
     errorscount = 0;
@@ -151,9 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
     bodyparties[4].style.display = "none";
     bodyparties[5].style.display = "none";
     document.querySelector(".history-letters").innerHTML = "";
-    palavraAdivinha = palavraAdivinha.trim();
     console.log("play", palavraAdivinha);
-    drawLines(palavraAdivinha.length);
   });
 
   //Reseta todo o jogo para o início

@@ -65,7 +65,8 @@ document.addEventListener("DOMContentLoaded", function () {
       errorsElement.innerHTML = errorscount;
 
       if (errorscount > 6) {
-        messageElement.innerHTML = "Você perdeu :(";
+        messageElement.innerHTML =
+          "Você perdeu :( a palavra era: " + palavraAdivinha;
         resetGame();
       }
 

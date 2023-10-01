@@ -10,6 +10,18 @@ document.addEventListener("DOMContentLoaded", function () {
   let errorscount = 0;
   let errorsElement = document.querySelector(".errorsp");
   let messageElement = document.querySelector(".message");
+  /*const fs = require("fs");
+
+  function getRandomLineFromFile(filePath) {
+    const fileData = fs.readFileSync(filePath, "utf-8").split("\n");
+    const randomIndex = Math.floor(Math.random() * fileData.length);
+    return fileData[randomIndex];
+  }
+
+  const filePath = "palavras.txt"; // Replace with the path to your file
+  const randomLine = getRandomLineFromFile(filePath);
+  console.log("A linha aleatória é: " + randomLine);*/
+
   // O jogador pode errar até 6, mais que 6 = game over;
   // Adicionar essa condição;
 
@@ -115,7 +127,8 @@ document.addEventListener("DOMContentLoaded", function () {
     //palavraAdivinha = myChance.first({ gender: "female" });
     //palavraAdivinha = palavraAdivinha.toUpperCase();
 
-    fetch("http://localhost:3333/")
+    /*
+    fetch("https://www.ime.usp.br/~pf/dicios/br-sem-acentos.txt")
       .then(function (response) {
         //console.log(response.json());
         return response.json();
@@ -124,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(response);
         palavraAdivinha = response;
         drawLines(palavraAdivinha.length);
-      });
+      });*/
 
     errorscount = 0;
     errorsElement.innerHTML = "0";

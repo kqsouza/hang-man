@@ -127,17 +127,17 @@ document.addEventListener("DOMContentLoaded", function () {
     //palavraAdivinha = myChance.first({ gender: "female" });
     //palavraAdivinha = palavraAdivinha.toUpperCase();
 
-    /*
-    fetch("https://www.ime.usp.br/~pf/dicios/br-sem-acentos.txt")
+    fetch("https://api.dicionario-aberto.net/random")
       .then(function (response) {
         //console.log(response.json());
         return response.json();
       })
       .then(function (response) {
-        console.log(response);
-        palavraAdivinha = response;
+        console.log(response.word);
+        palavraAdivinha = response.word.toUpperCase();
+        console.log(palavraAdivinha);
         drawLines(palavraAdivinha.length);
-      });*/
+      });
 
     errorscount = 0;
     errorsElement.innerHTML = "0";

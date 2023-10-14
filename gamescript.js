@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let errorscount = 0;
   let errorsElement = document.querySelector(".errorsp");
   let messageElement = document.querySelector(".message");
+  let fileData = "";
   //const fs = require("fs");
 
   /*function getRandomLineFromFile(filePath) {
@@ -31,10 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .then(function (full) {
       //console.log(full);
-      const fileData = full.split("\n");
+      fileData = full.split("\n");
       //console.log(fileData);
-      const randomIndex = Math.floor(Math.random() * fileData.length);
-      console.log(fileData[randomIndex]);
     });
 
   /*.then(function (resp) {
@@ -141,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  //Start o game
+  //Starta o game
   document.querySelector("#play").addEventListener("click", async function () {
     let a = document.querySelectorAll(".gm-btn");
     a.forEach(function (element) {
@@ -168,6 +167,11 @@ document.addEventListener("DOMContentLoaded", function () {
         drawLines(palavraAdivinha.length);
       });*/
 
+    const randomIndex = Math.floor(Math.random() * fileData.length);
+    console.log("A palavra é: " + fileData[randomIndex]);
+
+    palavraAdivinha = fileData[randomIndex].toUpperCase();
+
     errorscount = 0;
     errorsElement.innerHTML = "0";
     bodyparties[0].style.display = "none";
@@ -178,6 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
     bodyparties[5].style.display = "none";
     document.querySelector(".history-letters").innerHTML = "";
     console.log("play", palavraAdivinha);
+    drawLines(palavraAdivinha.length);
   });
 
   //Reseta todo o jogo para o início

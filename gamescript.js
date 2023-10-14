@@ -10,9 +10,10 @@ document.addEventListener("DOMContentLoaded", function () {
   let errorscount = 0;
   let errorsElement = document.querySelector(".errorsp");
   let messageElement = document.querySelector(".message");
-  /*const fs = require("fs");
+  let fileData = "";
+  //const fs = require("fs");
 
-  function getRandomLineFromFile(filePath) {
+  /*function getRandomLineFromFile(filePath) {
     const fileData = fs.readFileSync(filePath, "utf-8").split("\n");
     const randomIndex = Math.floor(Math.random() * fileData.length);
     return fileData[randomIndex];
@@ -21,6 +22,32 @@ document.addEventListener("DOMContentLoaded", function () {
   const filePath = "palavras.txt"; // Replace with the path to your file
   const randomLine = getRandomLineFromFile(filePath);
   console.log("A linha aleatória é: " + randomLine);*/
+
+  fetch("ime.usp.br_pf_dicios_br-sem-acentos.txt")
+    .then(function (full) {
+      //console.log(full);
+      //let a = full.text();
+      //console.log(a);
+      return full.text();
+    })
+    .then(function (full) {
+      //console.log(full);
+      fileData = full.split("\n");
+      //console.log(fileData);
+    });
+
+  /*.then(function (resp) {
+      console.log("Fase 1");
+      console.log(resp);
+      const fileData = resp.text();
+      return fileData;
+    })
+    .then(function (resp) {
+      console.log("OK2");
+      const fileData = resp.split("\n");
+      const randomIndex = Math.floor(Math.random() * fileData.length);
+      console.log(fileData[randomIndex]);
+    });*/
 
   // O jogador pode errar até 6, mais que 6 = game over;
   // Adicionar essa condição;
@@ -113,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  //Start o game
+  //Starta o game
   document.querySelector("#play").addEventListener("click", async function () {
     let a = document.querySelectorAll(".gm-btn");
     a.forEach(function (element) {
@@ -128,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //palavraAdivinha = myChance.first({ gender: "female" });
     //palavraAdivinha = palavraAdivinha.toUpperCase();
 
-    fetch("https://api.dicionario-aberto.net/random")
+    /*fetch("https://www.ime.usp.br/~pf/dicios/br-sem-acentos.txt")
       .then(function (response) {
         //console.log(response.json());
         return response.json();
@@ -138,7 +165,12 @@ document.addEventListener("DOMContentLoaded", function () {
         palavraAdivinha = response.word.toUpperCase();
         console.log(palavraAdivinha);
         drawLines(palavraAdivinha.length);
-      });
+      });*/
+
+    const randomIndex = Math.floor(Math.random() * fileData.length);
+    console.log("A palavra é: " + fileData[randomIndex]);
+
+    palavraAdivinha = fileData[randomIndex].toUpperCase();
 
     errorscount = 0;
     errorsElement.innerHTML = "0";
@@ -150,6 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
     bodyparties[5].style.display = "none";
     document.querySelector(".history-letters").innerHTML = "";
     console.log("play", palavraAdivinha);
+    drawLines(palavraAdivinha.length);
   });
 
   //Reseta todo o jogo para o início

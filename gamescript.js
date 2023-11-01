@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-  //let myChance = new Chance();
-  //console.log(myChance.first({ gender: "female" }));
   let letraEscolhida;
-  let palavraAdivinha = "";
+  let palavraAdivinha;
   let arr = [];
   let pai = document.querySelector(".guess-word");
   let indexes = [];
@@ -11,17 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
   let errorsElement = document.querySelector(".errorsp");
   let messageElement = document.querySelector(".message");
   let fileData = "";
-  //const fs = require("fs");
-
-  /*function getRandomLineFromFile(filePath) {
-    const fileData = fs.readFileSync(filePath, "utf-8").split("\n");
-    const randomIndex = Math.floor(Math.random() * fileData.length);
-    return fileData[randomIndex];
-  }
-
-  const filePath = "palavras.txt"; // Replace with the path to your file
-  const randomLine = getRandomLineFromFile(filePath);
-  console.log("A linha aleatória é: " + randomLine);*/
 
   fetch("ime.usp.br_pf_dicios_br-sem-acentos.txt")
     .then(function (full) {
@@ -36,22 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
       //console.log(fileData);
     });
 
-  /*.then(function (resp) {
-      console.log("Fase 1");
-      console.log(resp);
-      const fileData = resp.text();
-      return fileData;
-    })
-    .then(function (resp) {
-      console.log("OK2");
-      const fileData = resp.split("\n");
-      const randomIndex = Math.floor(Math.random() * fileData.length);
-      console.log(fileData[randomIndex]);
-    });*/
-
-  // O jogador pode errar até 6, mais que 6 = game over;
-  // Adicionar essa condição;
-
   //Função para desenhar na tela traços, de acordo com o tamanho da palavra.
   function drawLines(qtd) {
     if (arr == "") {
@@ -63,12 +34,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* Verifica se letra existe em palavra a ser adivinhada:
-  
   / Caso positivo, adiciona no array indexes
   / a posição desta(s), podendo ser uma ou mais posições 
   / verificaar possível atualização
   */
-
   function checkLetra(letraEscolhida) {
     let checked = false;
 
@@ -141,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   //Starta o game
-  document.querySelector("#play").addEventListener("click", async function () {
+  document.querySelector("#play").addEventListener("click", function () {
     let a = document.querySelectorAll(".gm-btn");
     a.forEach(function (element) {
       element.classList.remove("disabled");
@@ -152,25 +121,11 @@ document.addEventListener("DOMContentLoaded", function () {
     messageElement.innerHTML = "";
     indexes = [];
     arr = [];
-    //palavraAdivinha = myChance.first({ gender: "female" });
-    //palavraAdivinha = palavraAdivinha.toUpperCase();
-
-    /*fetch("https://www.ime.usp.br/~pf/dicios/br-sem-acentos.txt")
-      .then(function (response) {
-        //console.log(response.json());
-        return response.json();
-      })
-      .then(function (response) {
-        console.log(response.word);
-        palavraAdivinha = response.word.toUpperCase();
-        console.log(palavraAdivinha);
-        drawLines(palavraAdivinha.length);
-      });*/
 
     const randomIndex = Math.floor(Math.random() * fileData.length);
     console.log("A palavra é: " + fileData[randomIndex]);
 
-    palavraAdivinha = fileData[randomIndex].toUpperCase();
+    palavraAdivinha = fileData[randomIndex].toUpperCase().trim();
 
     errorscount = 0;
     errorsElement.innerHTML = "0";
